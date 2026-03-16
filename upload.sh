@@ -1,30 +1,54 @@
 #!/bin/bash
 
+# --- БЛОК БЕЗОПАСНОСТИ ---
+# Переходим в директорию, где физически находится этот файл скрипта
+cd "$(dirname "$0")"
+
+# Показываем пользователю, где мы находимся
+echo "--------------------------------------------------"
+echo "Текущая директория: $(pwd)"
+echo "--------------------------------------------------"
+
+# Проверка: тот ли это проект? (ищем index.html)
+if [ ! -f "index.html" ]; then
+    echo "❌ КРИТИЧЕСКАЯ ОШИБКА: index.html не найден в этой папке!"
+    echo "Скрипт остановлен, чтобы не задеплоить лишние файлы."
+    read -p "Нажмите Enter, чтобы выйти..."
+    exit 1
+fi
+# -------------------------
+
 # Проверяем, инициализирован ли Git
 if [ ! -d ".git" ]; then
-    echo "Инициализация Git..."
+    echo "📦 Инициализация Git..."
     git init
-    # Замени ссылку на свою!
-    git remote add origin https://github.com/MKSO4KA/AiNotesSlideShow
+    # Используем твою ссылку
+    git remote add origin https://github.com/mkso4ka/AiNotesSlideShow.git
     git branch -M main
 fi
 
-# Добавляем все изменения
+# Добавляем изменения
+echo "➕ Добавление файлов..."
 git add .
 
-# Спрашиваем описание изменений (commit message)
-echo "Введите описание изменений (или нажмите Enter для 'Update presentation'):"
+# Спрашиваем описание коммита
+echo "📝 Введите описание изменений (или просто Enter):"
 read message
 if [ -z "$message" ]; then
-    message="Update presentation"
+    message="Update presentation: $(date +'%Y-%m-%d %H:%M')"
 fi
 
-# Делаем коммит
+# Коммит
 git commit -m "$message"
 
-# Отправляем в репозиторий
-echo "Отправка на GitHub..."
+# Отправка
+echo "🚀 Отправка на GitHub..."
 git push -u origin main
 
-echo "Готово!"
-sleep 2
+echo "--------------------------------------------------"
+echo "✅ Все готово! Сайт обновится через минуту."
+echo "Ссылка: https://mkso4ka.github.io/AiNotesSlideShow/"
+echo "--------------------------------------------------"
+
+# Пауза, чтобы окно не закрылось сразу
+sleep 3
