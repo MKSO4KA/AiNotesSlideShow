@@ -1,0 +1,216 @@
+:root {
+    /* Apple/Linear Light Theme */
+    --bg-main: #F9FAFB;      
+    --surface: #FFFFFF;      
+    --surface-hover: #F3F4F6;
+    
+    --border: rgba(0, 0, 0, 0.06);
+    --border-strong: rgba(0, 0, 0, 0.12);
+    
+    --text-pure: #030712;    
+    --text-primary: #111827; 
+    --text-secondary: #4B5563; 
+    
+    --accent-indigo: #4F46E5;       
+    --accent-indigo-dim: rgba(79, 70, 229, 0.08);
+    --accent-emerald: #059669;      
+    --accent-emerald-dim: rgba(5, 150, 105, 0.08);
+    --accent-amber: #F59E0B;
+    --accent-red: #EF4444;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    overflow: hidden; 
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Типографика */
+h1 { font-size: clamp(3rem, 5vw, 5.5rem); line-height: 1.05; font-weight: 800; letter-spacing: -0.04em; color: var(--text-pure); margin-bottom: 24px;}
+h2.section-title { font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 800; letter-spacing: -0.04em; margin-bottom: 40px; color: var(--text-pure); }
+h3 { font-size: 1.5rem; font-weight: 700; color: var(--text-pure); line-height: 1.4; margin-bottom: 12px;}
+p { font-size: 1.15rem; color: var(--text-secondary); line-height: 1.6; }
+
+.mono { font-family: 'JetBrains Mono', monospace; }
+.tag { 
+    font-family: 'JetBrains Mono', monospace; 
+    font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; 
+    color: var(--accent-indigo); margin-bottom: 20px; 
+    display: inline-block; padding: 8px 16px; 
+    border: 1px solid var(--accent-indigo); border-radius: 100px; 
+    background-color: var(--accent-indigo-dim); font-weight: 600;
+}
+
+/* Контейнеры слайдов */
+#presentation-container { position: relative; width: 100vw; height: 100vh; }
+.slide {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    opacity: 0; visibility: hidden; z-index: 1;
+    display: flex; align-items: center; justify-content: center; padding: 60px 80px;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+.slide.active { opacity: 1; visibility: visible; z-index: 10; }
+.container { width: 100%; max-width: 1500px; margin: 0 auto; position: relative; }
+
+/* Карточки */
+.card { 
+    background: var(--surface); border: 1px solid var(--border); border-radius: 20px; 
+    padding: 40px; box-shadow: 0 4px 24px rgba(0,0,0,0.02);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
+}
+.card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.06); border-color: var(--border-strong);}
+.card-header { font-family: 'JetBrains Mono'; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.9rem; margin-bottom: 16px; border-bottom: 1px solid var(--border); padding-bottom: 16px;}
+
+/* Сетки */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; align-items: stretch;}
+.bento-grid { display: grid; grid-template-columns: 1.5fr 1fr; grid-template-rows: auto auto; gap: 24px; }
+.bento-main { grid-column: 1 / 2; grid-row: 1 / 3; background-image: radial-gradient(var(--border-strong) 1px, transparent 1px); background-size: 24px 24px; }
+
+/* Графики */
+.chart-box { width: 100%; height: 400px; display: flex; justify-content: center; align-items: center; position: relative; }
+.chart-box.large { height: 500px; }
+
+/* Элементы контента */
+.huge-data { font-size: 5rem; font-weight: 800; letter-spacing: -0.05em; margin: 10px 0; color: var(--text-pure); }
+.unit { font-size: 2rem; color: var(--text-secondary); margin-left: 8px;}
+.bad-data { border-top: 3px solid var(--accent-red); background-color: var(--surface-hover); }
+.good-data { border-top: 3px solid var(--accent-indigo); }
+.highlight-indigo { color: var(--accent-indigo); }
+.highlight-emerald { color: var(--accent-emerald); }
+.text-center { text-align: center; }
+
+/* --- ПРОФЕССИОНАЛЬНАЯ ДИАГРАММА ВЕННА (Apple Style 16:9 Safe) --- */
+.venn-container { 
+    position: relative; 
+    width: 100%; 
+    max-width: 1100px; /* Безопасные поля для экранов 16:9 */
+    margin: 10px auto 0; /* Приподняли весь блок чуть выше */
+    height: 560px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+/* Изящные вытянутые эллипсы */
+.venn-circle { 
+    position: absolute; 
+    width: 550px; 
+    height: 340px; 
+    border-radius: 50%; 
+    mix-blend-mode: multiply; /* Режим наложения цветов */
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); 
+}
+
+/* ХОЧУ (Indigo) - Слева Снизу */
+.venn-c1 { 
+    background: rgba(79, 70, 229, 0.08); 
+    border: 2px solid rgba(79, 70, 229, 0.4); 
+    transform: translate(-140px, 90px) rotate(35deg); /* Повернут к центру */
+}
+
+/* МОГУ (Emerald) - Справа Снизу */
+.venn-c2 { 
+    background: rgba(5, 150, 105, 0.08); 
+    border: 2px solid rgba(5, 150, 105, 0.4); 
+    transform: translate(140px, 90px) rotate(-35deg); /* Повернут к центру */
+}
+
+/* НАДО (Amber) - Сверху по центру */
+.venn-c3 { 
+    background: rgba(245, 158, 11, 0.08); 
+    border: 2px solid rgba(245, 158, 11, 0.4); 
+    transform: translate(0, -90px) rotate(0deg); /* Строго горизонтально */
+}
+
+/* Ядро пересечения (Product Fit) */
+.venn-core { 
+    position: absolute; 
+    width: 130px; 
+    height: 130px; 
+    background: var(--surface); 
+    border-radius: 50%; 
+    z-index: 10; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    text-align: center; 
+    font-weight: 800; 
+    font-family: 'JetBrains Mono'; 
+    font-size: 1.05rem; 
+    color: var(--text-pure); 
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1); 
+    border: 3px solid var(--text-pure);
+    transform: translateY(15px); /* Центруем ядро в новом смещенном пересечении */
+}
+
+/* Glassmorphism Карточки с текстом */
+.venn-text-card { 
+    position: absolute; 
+    background: rgba(255, 255, 255, 0.92); 
+    backdrop-filter: blur(20px); 
+    -webkit-backdrop-filter: blur(20px); 
+    border: 1px solid var(--border-strong); 
+    padding: 24px 30px; 
+    border-radius: 20px; 
+    width: 330px; 
+    box-shadow: 0 20px 50px rgba(0,0,0,0.06); 
+    z-index: 5;
+}
+.venn-text-card h3 { 
+    font-family: 'JetBrains Mono'; 
+    font-size: 1.05rem; 
+    margin-bottom: 12px; 
+    font-weight: 800; 
+}
+.venn-text-card p { 
+    font-size: 1.05rem; 
+    color: var(--text-secondary); 
+    line-height: 1.5; 
+    margin: 0; 
+}
+
+/* Карточка ХОЧУ - Слева снизу */
+.vt-1 { 
+    bottom: 12%; /* Подняли выше от нижнего края */
+    left: 0; 
+    border-top: 4px solid var(--accent-indigo); 
+}
+
+/* Карточка МОГУ - Справа снизу */
+.vt-2 { 
+    bottom: 12%; /* Подняли выше от нижнего края */
+    right: 0; 
+    border-top: 4px solid var(--accent-emerald); 
+}
+
+/* Карточка НАДО - Сверху по центру */
+.vt-3 { 
+    top: -15px; /* Слегка вылезает за верхнюю границу для объема */
+    left: 50%; 
+    transform: translateX(-50%); 
+    border-top: 4px solid var(--accent-amber); 
+    text-align: center; 
+}
+/* Канва Ценностей */
+.vp-list { list-style: none; margin-top: 20px; }
+.vp-list li { padding: 16px; border-bottom: 1px solid var(--border); font-size: 1.1rem; display: flex; align-items: flex-start; gap: 12px;}
+.vp-list li::before { content: "→"; color: var(--accent-indigo); font-weight: bold; }
+.vp-list.pains li::before { content: "×"; color: var(--accent-red); }
+
+.score-number { font-size: 7rem; font-weight: 800; color: var(--text-pure); line-height: 1; margin: 16px 0; letter-spacing: -0.05em;}
+
+/* Навигация */
+.controls { 
+    position: fixed; bottom: 30px; right: 50px; display: flex; gap: 24px; align-items: center; z-index: 100; 
+    background: rgba(255, 255, 255, 0.85); padding: 12px 24px; border-radius: 100px; 
+    backdrop-filter: blur(12px); border: 1px solid var(--border); box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+.controls button { background: none; border: none; color: var(--text-secondary); font-size: 1.2rem; cursor: pointer; transition: 0.2s; font-family: 'JetBrains Mono';}
+.controls button:hover { color: var(--text-pure); }
+#slideCounter { font-family: 'JetBrains Mono'; color: var(--text-pure); font-weight: 700; letter-spacing: 0.1em; }

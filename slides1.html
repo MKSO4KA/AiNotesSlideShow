@@ -1,0 +1,77 @@
+<!-- Слайд 1: Титульный -->
+<section class="slide">
+    <div class="container grid-2">
+        <div>
+            <div class="tag anim">Учебный проект / Pitch Deck</div>
+            <h1 class="anim">Smart Notes<br>Generator</h1>
+            <h3 class="anim highlight-indigo" style="margin-bottom: 24px;">Система интеллектуального синтеза STEM-конспектов</h3>
+            <p class="anim">От хаоса в галерее смартфона к структурированному знанию. Гибридный алгоритм захвата с очисткой препятствий.</p>
+        </div>
+        <div class="anim chart-box">
+            <!-- Абстрактный 3D плейсхолдер -->
+            <div style="width: 350px; height: 350px; border-radius: 50%; background: radial-gradient(circle, var(--accent-indigo-dim) 0%, transparent 70%); border: 1px dashed var(--accent-indigo); display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono'; color: var(--accent-indigo);">[ 3D Model / Logo ]</div>
+        </div>
+    </div>
+</section>
+
+<!-- Слайд 2: Проблема (ГРАФИК) -->
+<section class="slide">
+    <div class="container grid-2">
+        <div>
+            <h2 class="section-title anim">Цифровой мусор против учебы</h2>
+            <p class="anim">За семестр студент делает ~500 фотографий доски, которые теряются в галерее. Запись классического видеолекции (1.5 часа) весит 3-4 ГБ. <br><br><b>Видео — это тупик для навигации.</b> Память телефона забита, а найти нужную формулу невозможно.</p>
+            <div class="card bad-data anim" style="margin-top: 30px; padding: 24px;">
+                <h3 style="color: var(--accent-red); margin: 0;">Проблема: 90% видеоряда — это статичная доска, не несущая новой информации.</h3>
+            </div>
+        </div>
+        <div class="card anim">
+            <h3 class="text-center">Структура видеолекции (ГБ)</h3>
+            <div class="chart-box">
+                <canvas id="problemChart"></canvas>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Слайд 3: Решение -->
+<section class="slide">
+    <div class="container">
+        <h2 class="section-title anim text-center">Наше решение: Умный Слайд-каст</h2>
+        <div class="grid-2">
+            <div class="card bad-data anim">
+                <div class="card-header">Video (MP4)</div>
+                <div class="huge-data">3.5<span class="unit">ГБ</span></div>
+                <p>Тяжеловесный архив. Невозможно осуществлять поиск. Огромная нагрузка на облако.</p>
+            </div>
+            <div class="card good-data anim">
+                <div class="card-header">Hybrid Capture (WebM)</div>
+                <div class="huge-data highlight-indigo">150<span class="unit">МБ</span></div>
+                <p>Адаптивный таймлапс + Аудио. Видео-слайдшоу с полной сохранностью контекста и навигацией.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Слайд 4: Технологическое ядро -->
+<section class="slide">
+    <div class="container">
+        <h2 class="section-title anim">Технологическое ядро (Vision)</h2>
+        <div class="bento-grid">
+            <div class="card bento-main anim">
+                <div class="tag highlight-emerald">01 / Ghost Removal</div>
+                <h3>Алгоритм очистки препятствий</h3>
+                <p>Нейросеть в реальном времени "вырезает" фигуру лектора, восстанавливая фон за ним. Студент видит только чистую доску со всеми формулами, лектор становится прозрачным.</p>
+            </div>
+            <div class="card anim">
+                <div class="tag">02 / Auto-Crop</div>
+                <h3>Исправление геометрии</h3>
+                <p>Автоматическое выравнивание перспективы доски, даже если съемка ведется с 7-го ряда аудитории.</p>
+            </div>
+            <div class="card anim">
+                <div class="tag">03 / Delta-Sampling</div>
+                <h3>Умный триггер записи</h3>
+                <p>Снимок сохраняется только в момент реального изменения данных на доске. Ноль пустых кадров.</p>
+            </div>
+        </div>
+    </div>
+</section>

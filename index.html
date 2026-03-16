@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pitch Deck | Smart Notes</title>
+    <!-- Шрифты -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Стили -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Библиотеки -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+<body>
+
+    <!-- Контейнер, куда скрипт подгрузит все слайды -->
+    <div id="presentation-container">
+        <!-- Заглушка на время загрузки -->
+        <div id="loader" style="height: 100vh; display: flex; align-items: center; justify-content: center; font-family: 'JetBrains Mono'; color: var(--accent-indigo);">
+            Загрузка слайдов...
+        </div>
+    </div>
+
+    <!-- Управление -->
+    <div class="controls">
+        <button id="prevBtn" aria-label="Предыдущий слайд">←</button>
+        <span id="slideCounter">...</span>
+        <button id="nextBtn" aria-label="Следующий слайд">→</button>
+    </div>
+
+    <!-- Подключаем только логику -->
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+    "evaluationMatrix": {
+        "labels":["Срок жизни", "Объем рынка", "Конкуренция", "Уровень цены", "Качество"],
+        "scores":[3, 2, 4, 5, 4]
+    },
+    "audienceData": {
+        "labels":["High Performers (6%)", "Остальной поток (94%)"],
+        "percentages": [6, 94]
+    }
+}
